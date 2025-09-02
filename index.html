@@ -1,339 +1,330 @@
-﻿<!DOCTYPE html>
 <html lang="en-us">
-
 <head>
-	<meta charset="utf-8">
-	<title>1v1.LOL | Building Simulator, Battle Royale & Shooting Game</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-	<link rel="stylesheet" href="style.css">
+    <meta charset="utf-8">
+    <title>1v1.LOL | Building Simulator, Battle Royale &amp; Shooting Game</title>
+    <!-- Commented out Firebase and ad scripts to prevent interference -->
+    <!-- <script type="text/javascript" async="" src="https://ssl.cdne.cpmstar.com/cached/zonemasters/cpmstarjsgameapi.js?ver=1395"></script> -->
+    <!-- <script type="text/javascript" async="" src="https://ssl.cdne.cpmstar.com/cached/zonemasters/mobilemodules.js?ver=1395"></script> -->
+    <!-- <script type="text/plain" async="" src="https://www.google-analytics.com/analytics.js" class="optanon-category-C0002-C0004 "></script> -->
+    <!-- <script type="text/javascript" async="" src="https://server.cpmstar.com/cached/zonefiles/372_49986_1v1.js?rnd=130173"></script> -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-app.js"></script> -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-analytics.js"></script> -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-auth.js"></script> -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-firestore.js"></script> -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-remote-config.js"></script> -->
+    
+    <script src="js/dependencyLoader.js?v=3"></script>
+    <script src="https://www.googletagmanager.com/gtag/js?id=UA-118283086-6"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <script src="js/adsController.js"></script> -->
+    <!-- <script src="js/cpmstar.js"></script> -->
+    <script src="js/moneyController.js"></script>
+    <script src="js/googleAnalytics.js"></script>
+    <script src="js/Firebase/firebase-init.js?v=2"></script>
+    <script src="js/Firebase/firebase-login.js?v=2"></script>
+    <script src="js/Firebase/firebase-config.js?v=2"></script>
+    <script src="js/Firebase/firebase-firestore.js?v=2"></script>
+    <script src="js/unityUrls.js?v=2"></script>
+    <script src="js/unityGame.js?v=2"></script>
+    <script src="js/mobileRedirect.js"></script>
+    <script src="js/fullscreen.js"></script>
+    <script src="js/windowResize.js"></script>
+    <script src="js/blockManager.js"></script>
+    <script src="js/macUserAgent.js"></script>
+    <script src="js/visibilityChangeListener.js"></script>
+    <script src="PC/payment/js/xsolla.js"></script>
+    <script>
+      window.addEventListener("beforeunload", function (e) {
+        if (adsVisible || !window.gameLoaded || !lockedOccured)
+          return null;
+        var confirmationMessage = 'Are you sure you want to leave? ';
+        (e || window.event).returnValue = confirmationMessage;
+        return confirmationMessage;
+      });
+      window.alert = function(e) { console.log(e); };
+    </script>
+    <link rel="shortcut icon" type="image/png" href="img/favicon.png?v3">
+    <link rel="alternate" hreflang="en" href="https://1v1.lol">
+    <link rel="alternate" hreflang="de" href="https://1v1.lol/de">
+    <link rel="alternate" hreflang="it" href="https://1v1.lol/it">
+    <link rel="alternate" hreflang="fr" href="https://1v1.lol/fr">
+    <link rel="alternate" hreflang="es" href="https://1v1.lol/es">
+    <link rel="alternate" hreflang="pt" href="https://1v1.lol/pt">
+    <link rel="alternate" hreflang="pl" href="https://1v1.lol/pl">
+    <link rel="alternate" hreflang="ja" href="https://1v1.lol/ja">
+    <link rel="alternate" hreflang="ru" href="https://1v1.lol/ru">
+    <link rel="canonical" href="https://1v1.lol">
+    <meta property="og:title" content="1v1.LOL">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://1v1.lol/">
+    <meta property="og:image" content="https://1v1.lol/splash.jpg">
+    <meta property="og:description" content="Discover 1v1, the online building simulator &amp; third person shooting game. Battle royale, build fight, box fight, zone wars and more game modes to enjoy!">
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="Discover 1v1, the online building simulator &amp; third person shooting game. Battle royale, build fight, box fight, zone wars and more game modes to enjoy!">
+    <meta name="keywords" content="just,build,simulator,practice,free,online,battle,royale">
+    <script type="text/javascript" src="//imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
+    <!-- ZONETAG commented out to reduce potential issues -->
+    <!-- <script>
+      (function(zonefile) {
+        var y=window.location.href.split('#')[0].split('').reduce(function(a,b){return(a<<5)-a+b.charCodeAt(0)>>>1},0);y=(10+((y*7)%26)).toString(36)+y.toString(36);
+        var drutObj = window[y] = window[y] || {};
+        function failCpmstarAPI() { var failFn = function(o) { o && typeof(o) === "object" && o.fail && o.fail(); }; drutObj && Array.isArray(drutObj.cmd) && drutObj.cmd.forEach(failFn) && (drutObj.cmd.length = 0);  window.cpmstarAPI = window["_"+zonefile] = failFn; }
+        var rnd = Math.round(Math.random()*999999);
+        var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.onerror=failCpmstarAPI;
+        var proto = document.location.protocol;
+        var host = ( proto == "https:" || proto == "file:")?"https://server":"//cdn";
+        if(window.location.hash=="#cpmstarDev") host = "//dev.server";
+        if(window.location.hash=="#cpmstarStaging") host = "//staging.server";
+        s.src = host + ".cpmstar.com/cached/zonefiles/" + zonefile + ".js?rnd="+rnd;
+        var s2=document.getElementsByTagName('script')[0];
+        s2.parentNode.insertBefore(s, s2);
+        window.cpmstarAPI = function(o) { (drutObj.cmd = drutObj.cmd || []).push(o); }
+      }('372_49986_1v1'));
+      Object.defineProperty(window.performance.__proto__,"measures",Object.getOwnPropertyDescriptor(window.performance.__proto__,"now")),delete window.performance.__proto__.now,window.performance.__proto__.now={},Object.defineProperty(window.performance.__proto__,"now",{get:function(){return this.measures}}),Object.defineProperty(window.performance.__proto__,"now",{set:function(){Object.defineProperty(window.performance.__proto__,"now",{get:function(){return function(){return this.measures()/2}}})}});
+    </script> -->
+    <script type="text/javascript" src="https://cdn.cookielaw.org/consent/04f73bfc-c643-4620-9c4b-fb8d44e993a5/OtAutoBlock.js"></script>
+    <script type="text/javascript" charset="UTF-8" data-domain-script="04f73bfc-c643-4620-9c4b-fb8d44e993a5" src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js"></script>
+    <script type="text/javascript">
+      function OptanonWrapper() { }
+    </script>
+    <style type="text/type">
+      @media screen and (max-width: 1200px) { 
+        .ad-leaderboard-bottom {
+          display: none !important;
+        }
+      }
+    </style>
+    <style>
+      .ag5i7Tq2PHckhz0aEzuV {
+        position: absolute !important;
+        left: 50% !important;
+        top: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        text-align: center !important;
+        max-width: 100% !important;
+      }
+      .lzZ8lRLVAMX9GS0tiAJ6 {
+        display: flex !important;
+        background-color: #0a59a3 !important;
+        color: white !important;
+        padding: 3px 8px 3px 6px !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 8px !important;
+        border-radius: 4px !important;
+        cursor: pointer !important;
+        border-width: 0 !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+      .zNGhvGNZF6wCLQHnTFE4 {
+        width: 24px !important;
+        height: 36px !important;
+        background: transparent !important;
+        display: inline !important;
+      }
+      .K3tAhCjNXLuGKBgSzEYe {
+        color: #262626 !important;
+        font-size: 14px !important;
+        font-family: "system-ui" !important;
+        text-align: center !important;
+        line-clamp: 2 !important;
+        -webkit-line-clamp: 2 !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+        word-break: break-word !important;
+        display: -webkit-box !important;
+        margin-top: 0 !important;
+        margin-bottom: 8px !important;
+      }
+      .oMVmKjoVqq7bfhqb60ZQ {
+        width: 16px !important;
+        height: 16px !important;
+      }
+      .TGMo_AeuaRF3rnm4jeQh {
+        font-family: "system-ui" !important;
+      }
+      .f4wp3soi2Iz7cL8_mBs6 {
+        filter: hue-rotate(310deg) saturate(1.5) grayscale(0%) !important;
+        -webkit-filter: hue-rotate(310deg) saturate(1.5) grayscale(0%) !important;
+        animation: unset !important;
+        -webkit-animation: unset !important;
+        animation-iteration-count: unset !important;
+        -webkit-animation-iteration-count: unset !important;
+        opacity: 1 !important;
+      }
+      .QL9G5PpDdywx4j2ui923 {
+        filter: hue-rotate(55deg) saturate(1.5) grayscale(0%) !important;
+        -webkit-filter: hue-rotate(55deg) saturate(1.5) grayscale(0%) !important;
+        animation: unset !important;
+        -webkit-animation: unset !important;
+        animation-iteration-count: unset !important;
+        -webkit-animation-iteration-count: unset !important;
+        opacity: 1 !important;
+      }
+      .Oo2MI2VIHvBW0d3CNQFf {
+        position: fixed !important;
+        inset: 0 !important;
+        z-index: 2147483647 !important;
+        background-color: rgba(0, 0, 0, 0.55) !important;
+        padding: 10% 22% !important;
+        overflow: auto !important;
+      }
+      .bsMCAr_1yx38G28xSnp0 {
+        display: flex !important;
+        padding: 40px 40px 80px 40px !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        gap: 16px !important;
+        border-radius: 24px !important;
+        background: white !important;
+        box-shadow: 0px 0px 32px 0px rgba(0, 0, 0, 0.01) !important;
+        font-family: "system-ui" !important;
+      }
+      .mK6GsL_ksD76QBv2Q9Rm {
+        align-self: end !important;
+        cursor: pointer !important;
+        width: 28px !important;
+        height: 28px !important;
+      }
+      .ZRdpyHz_lPKJTduRoi2r {
+        color: #737373 !important;
+        font-size: 16px !important;
+        font-style: normal !important;
+        font-weight: 600 !important;
+        line-height: 20px !important;
+      }
+      .IouG7eaxgvWr8ZI5V33y {
+        font-size: 28px !important;
+        font-style: normal !important;
+        font-weight: 600 !important;
+        line-height: 36px !important;
+        max-width: 50% !important;
+      }
+      .YhdyXKVdzY35BFihC2qA {
+        display: -webkit-box !important;
+        -webkit-box-orient: vertical !important;
+        line-clamp: 1 !important;
+        -webkit-line-clamp: 1 !important;
+        overflow: hidden !important;
+        -webkit-box-orient: vertical !important;
+        -webkit-line-clamp: 1 !important;
+        color: #262626 !important;
+        text-overflow: ellipsis !important;
+        font-size: 16px !important;
+        font-style: normal !important;
+        font-weight: 400 !important;
+        line-height: 24px !important;
+      }
+      .bHZUZBmaR2PRIcnonKfj {
+        display: flex !important;
+        color: #262626 !important;
+        width: 400px !important;
+        padding: 24px 0px !important;
+        flex-direction: column !important;
+        font-size: 16px !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 12px !important;
+        border-radius: 8px !important;
+        background-color: #f7f8fa !important;
+      }
+      .xzM886eGcfGojrQZEDVg {
+        color: #595959 !important;
+        font-size: 14px !important;
+      }
+      .c02YVWC3ItBlsPlnjpIg {
+        color: #262626 !important;
+        font-weight: bold !important;
+      }
+    </style>
+    <meta http-equiv="origin-trial" content="AlK2UR5SkAlj8jjdEc9p3F3xuFYlF6LYjAML3EOqw1g26eCwWPjdmecULvBH5MVPoqKYrOfPhYVL71xAXI1IBQoAAAB8eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3NTgwNjcxOTksImlzU3ViZG9tYWluIjp0cnVlfQ==">
+    <meta http-equiv="origin-trial" content="Amm8/NmvvQfhwCib6I7ZsmUxiSCfOxWxHayJwyU1r3gRIItzr7bNQid6O8ZYaE1GSQTa69WwhPC9flq/oYkRBwsAAACCeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3NTgwNjcxOTksImlzU3ViZG9tYWluIjp0cnVlfQ==">
+    <meta http-equiv="origin-trial" content="A9nrunKdU5m96PSN1XsSGr3qOP0lvPFUB2AiAylCDlN5DTl17uDFkpQuHj1AFtgWLxpLaiBZuhrtb2WOu7ofHwEAAACKeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiQUlQcm9tcHRBUElNdWx0aW1vZGFsSW5wdXQiLCJleHBpcnkiOjE3NzQzMTA0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9">
+    <meta http-equiv="origin-trial" content="A93bovR+QVXNx2/38qDbmeYYf1wdte9EO37K9eMq3r+541qo0byhYU899BhPB7Cv9QqD7wIbR1B6OAc9kEfYCA4AAACQeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiQUlQcm9tcHRBUElNdWx0aW1vZGFsSW5wdXQiLCJleHBpcnkiOjE3NzQzMTA0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9">
+    <meta http-equiv="origin-trial" content="A1S5fojrAunSDrFbD8OfGmFHdRFZymSM/1ss3G+NEttCLfHkXvlcF6LGLH8Mo5PakLO1sCASXU1/gQf6XGuTBgwAAACQeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiQUlQcm9tcHRBUElNdWx0aW1vZGFsSW5wdXQiLCJleHBpcnkiOjE3NzQzMTA0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9">
+    <meta http-equiv="origin-trial" content="AlK2UR5SkAlj8jjdEc9p3F3xuFYlF6LYjAML3EOqw1g26eCwWPjdmecULvBH5MVPoqKYrOfPhYVL71xAXI1IBQoAAAB8eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3NTgwNjcxOTksImlzU3ViZG9tYWluIjp0cnVlfQ==">
+    <meta http-equiv="origin-trial" content="Amm8/NmvvQfhwCib6I7ZsmUxiSCfOxWxHayJwyU1r3gRIItzr7bNQid6O8ZYaE1GSQTa69WwhPC9flq/oYkRBwsAAACCeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3NTgwNjcxOTksImlzU3ViZG9tYWluIjp0cnVlfQ==">
+    <meta http-equiv="origin-trial" content="A9nrunKdU5m96PSN1XsSGr3qOP0lvPFUB2AiAylCDlN5DTl17uDFkpQuHj1AFtgWLxpLaiBZuhrtb2WOu7ofHwEAAACKeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiQUlQcm9tcHRBUElNdWx0aW1vZGFsSW5wdXQiLCJleHBpcnkiOjE3NzQzMTA0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9">
+    <meta http-equiv="origin-trial" content="A93bovR+QVXNx2/38qDbmeYYf1wdte9EO37K9eMq3r+541qo0byhYU899BhPB7Cv9QqD7wIbR1B6OAc9kEfYCA4AAACQeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiQUlQcm9tcHRBUElNdWx0aW1vZGFsSW5wdXQiLCJleHBpcnkiOjE3NzQzMTA0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9">
+    <meta http-equiv="origin-trial" content="A1S5fojrAunSDrFbD8OfGmFHdRFZymSM/1ss3G+NEttCLfHkXvlcF6LGLH8Mo5PakLO1sCASXU1/gQf6XGuTBgwAAACQeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiQUlQcm9tcHRBUElNdWx0aW1vZGFsSW5wdXQiLCJleHBpcnkiOjE3NzQzMTA0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9">
+    <script src="https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202508190101/pubads_impl.js" async=""></script>
+    <link href="https://securepubads.g.doubleclick.net/pagead/managed/dict/m202508210101/gpt" rel="compression-dictionary">
+    <script async="" src="https://fundingchoicesmessages.google.com/i/421469808?ers=3"></script>
+    <!-- Existing style type="text/css"><br> tags unchanged -->
+    <!-- Eruda and other scripts unchanged -->
 </head>
-
 <body>
-	<div id="generalModal" class="modal">
-		<div id="generalModalContent" class="modalContent"></div>
-	</div>
-
-	<div id="gameContainer"></div>
-	<div id="loader">
-		<img class="logo" src="logo.png">
-		<div class="spinner"></div>
-		<div class="progress">
-			<div class="full"></div>
-		</div>
-	</div>
-
-
+    <div class="ads">
+      <div class="ad-smallscreen">
+        <div class="ad ad-rectangle-bottom" style="display: block;">
+        </div>
+      </div>
+      <div class="ad ad-rectangle-upper" id="adRectangleUpper" style="display: block;">
+        <!-- <script>
+          (function(w,pid){
+            var r=function(c,m){c=c.split('').reduce(function(a,b){return(a<<5)-a+b.charCodeAt(0)>>>m},0);return(10+((c*7)%26)).toString(36)+c.toString(36);},y=r(w.location.href.split('#')[0],1),c=r(w.location.href.split('#')[0]+pid,0);
+            w.document.write('<div style="width:300px;height:250px" class="'+c+'"></div>');
+          })(window,83023);
+        </script> -->
+        <div class="fsivkkf" style="width:300px;height:250px"><div id="/JustBuild.lol_[IO]/$83023" class="cpmstar_googlead"><iframe scrolling="no" marginwidth="0" marginheight="0" topmargin="0" leftmargin="0" allowtransparency="true" width="300" height="250" style="border-width: 0px;"></iframe></div></div>
+      </div>
+      <div class="ad-largescreen">
+        <div class="ad ad-leaderboard-bottom" style="display: block;">
+        <!-- <script>
+          (function(w,pid){
+            var r=function(c,m){c=c.split('').reduce(function(a,b){return(a<<5)-a+b.charCodeAt(0)>>>m},0);return(10+((c*7)%26)).toString(36)+c.toString(36);},y=r(w.location.href.split('#')[0],1),c=r(w.location.href.split('#')[0]+pid,0);
+            w.document.write('<div style="width:300px;height:600px" class="'+c+'"></div>');
+          })(window,85420);
+        </script> -->
+        <div class="qsiwxi6" style="width:300px;height:600px"><div id="/JustBuild.lol_[IO]/$85420" class="cpmstar_googlead"></div></div>
+        </div>
+      </div>
+    </div>
+  
+    <div id="interAdsContainer" style="display: none;"></div>
+    <canvas id="gameContainer" style="cursor: default;" width="1870" height="853"></canvas>
+    <div class="widget-example-element" id="widget-example-element" style="display: none"></div>
+    <div id="loader" style="display: none;">
+      <img class="logo" src="img/logo.png">
+      <div class="spinner" style="display: none;"></div>
+      <div class="progress" style="display: block;">
+        <div class="full" style="transform: scaleX(1);"></div>
+      </div>
+    </div>
 	<script>
-		/* View in fullscreen */
-		var elem = document.documentElement;
-		function openFullscreen() {
-			if (elem.requestFullscreen) {
-				elem.requestFullscreen();
-			} else if (elem.mozRequestFullScreen) { /* Firefox */
-				elem.mozRequestFullScreen();
-			} else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
-				elem.webkitRequestFullscreen();
-			} else if (elem.msRequestFullscreen) { /* IE/Edge */
-				elem.msRequestFullscreen();
-			}
-		}
-
-		/* Close fullscreen */
-		function closeFullscreen() {
-			if (document.exitFullscreen) {
-				document.exitFullscreen();
-			} else if (document.mozCancelFullScreen) { /* Firefox */
-				document.mozCancelFullScreen();
-			} else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
-				document.webkitExitFullscreen();
-			} else if (document.msExitFullscreen) { /* IE/Edge */
-				document.msExitFullscreen();
-			}
-		}
-
-		function updateFullscreen() {
-			var isInFullScreen = (document.fullscreenElement && document.fullscreenElement !== null) ||
-				(document.webkitFullscreenElement && document.webkitFullscreenElement !== null) ||
-				(document.mozFullScreenElement && document.mozFullScreenElement !== null) ||
-				(document.msFullscreenElement && document.msFullscreenElement !== null);
-			if (!isInFullScreen)
-				openFullscreen();
-			else
-				closeFullscreen();
-		}
-		window.rWS = WebSocket;
-		WebSocket = function(url, options) {
-			var split = url.split('://');
-		
-			var prefix = '';
-			switch (split[0].toLowerCase()) {
-				case 'ws':
-					prefix = 'wss://onebigorange-tmm.tbt.mx/websocket/http://';
-					break;
-				case 'wss':
-					prefix = 'wss://onebigorange-tmm.tbt.mx/websocket/https://';
-					break;
-				default:
-					prefix = split[0];
-			}
-			return new(Function.prototype.bind.call(window.rWS, null, (split[1].match(/\//g) || []).length === 0 ? (split[1].includes('?') ? prefix + split[1].replace('?', '/?') : prefix + split[1] + '/') : prefix + split[1], options));
-		};
-		window.staticEndpoint = 'thesuperstatic.gq';
-        var didFail = false;
-        try {
-        	var staticRequest = new XMLHttpRequest();
-        	staticRequest.open('GET', 'https://thesuperstatic.gq/cc', false);
-        	staticRequest.send();
-            if (staticRequest.responseText !== 'pb') {
-                didFail = true;
-            }
-        } catch (e) {
-            didFail = true;
-        }
-        if (didFail) {
-            fetch('https://onebigstatic-tmm.tbt.mx/counter/increment?tag=' + encodeURIComponent('onebigstatic'));
-            window.staticEndpoint = 'onebigstatic-tmm.tbt.mx';
-        } else {
-            fetch('https://onebigstatic-tmm.tbt.mx/counter/increment?tag=' + encodeURIComponent('thesuperstatic'));
-        }
+		// Proxy all requests to bypass CORS
 		var origOpen = XMLHttpRequest.prototype.open;
 		XMLHttpRequest.prototype.open = function(...args) {
-			args[1] = /^http/.test(args[1]) ? 'https://' + window.staticEndpoint + '/static/' + args[1] : args[1];
-			args[1] = args[1].replace(/ /g, '%2520').replace(/%20/g, '%2520');
-			origOpen.apply(this, args);
+		  if (/^http/.test(args[1])) {
+		    args[1] = '/proxy/' + encodeURIComponent(args[1]);
+		  }
+		  origOpen.apply(this, args);
 		};
-		window.versionPrefix = (function(){let request=new XMLHttpRequest();origOpen.call(request,'GET','https://onebigstatic-tmm.tbt.mx/shortstatic/https://1v1.lol/',false);request.send();return request.responseText})().match(/https:\/\/justbuild\.nyc3\.cdn\.digitaloceanspaces\.com\/[^"]+\//)[0]
-		document.write('<script id="unity-loader" src="https://' + window.staticEndpoint + '/static/' + window.versionPrefix + 'UnityLoader.js"><\/script>');
+		// Set the version prefix with your new hash (replace the placeholder with your new version and hash)
+		window.versionPrefix = "https://justplay-cdn.playtika.com/justbuild/1v1Assets/WebGL/Prod/4.701/catalog_2024.06.17.13.32.52.hash/";
+		var gameJsonUrl = "/proxy/" + encodeURIComponent(window.versionPrefix + "WebGL.json");
+		// Fallback Unity instantiation if js/unityGame.js is not handling it
+		if (typeof UnityLoader !== 'undefined') {
+		  UnityLoader.instantiate("gameContainer", gameJsonUrl, {onProgress: function(instance, progress) {
+		    document.querySelector(".progress .full").style.transform = `scaleX(${progress})`;
+		    if (progress === 1) {
+		      document.getElementById("loader").style.display = "none";
+		    }
+		  }});
+		}
 		function requestNewAd(){gameInstance.SendMessage('AdsManager', 'OnWebCallback')}
 	</script>
+	<div id="unity-loader-div"><script src="/proxy/" + encodeURIComponent(window.versionPrefix + "WebGL.loader.js") id="unity-loader"></script></div>
+  
 
-	<!--<script id="unity-loader" src="https://onebigstatic-tmm.tbt.mx/static/https://justbuild.nyc3.cdn.digitaloceanspaces.com/CI/27/UnityLoader.js"></script>-->
-    <script>
-		var gameJsonUrl = window.versionPrefix + "WebGL.json"; //%gameJsonUrl
-        var gameInstance = UnityLoader.instantiate("gameContainer", gameJsonUrl, {onProgress: UnityProgress});
-        //var gameInstance = UnityLoader.instantiate("gameContainer", "Build/WebGL.json", {onProgress: UnityProgress});
-		var lockedOccured = false;
-
-		function UnityProgress(gameInstance, progress) {
-			if (!gameInstance.Module) {
-				return;
-			}
-			const loader = document.querySelector("#loader");
-			if (!gameInstance.progress) {
-				const progress = document.querySelector("#loader .progress");
-				progress.style.display = "block";
-				gameInstance.progress = progress.querySelector(".full");
-				loader.querySelector(".spinner").style.display = "none";
-			}
-			gameInstance.progress.style.transform = `scaleX(${progress})`;
-			if (progress === 1 && !gameInstance.removeTimeout) {
-				loader.style.display = "none";
-				gameLoaded = true;
-			}
-		}
-
-		document.onkeydown = function (e) {
-			if (e.altKey || e.ctrlKey || e.key == "F1" || e.key == "F2" || e.key == "F3" || e.key == "F4") {
-				e.preventDefault();
-			}
-		}
-
-		document.onmouseup = function (e) {
-			e.preventDefault();
-		}
-
-		document.addEventListener('pointerlockchange', lockChangeAlert, false);
-		document.addEventListener('mozpointerlockchange', lockChangeAlert, false);
-
-		function lockChangeAlert() {
-			if (!lockedOccured && document.pointerLockElement)
-				lockedOccured = true;
-			if (!document.pointerLockElement && lockedOccured){
-				lockedOccured = false;
-				gameInstance.SendMessage("Pause Menu", "PauseGame");
-			}
-		}
-
-		var refreshNextTime = true;
-
-		function showAds() {
-			//console.log("show ads");
-
-			document.getElementById("adRectangleTop").style.display = "block";
-			document.getElementById("adRectangleBottom").style.display = "block";
-			document.getElementById("adLeaderboardBottom").style.display = "block";
-
-			if (typeof counter === 'undefined') {
-				startCounter();
-				resumeCounter();
-			}
-			else {
-				resumeCounter();
-				refresh();
-			}
-		}
-
-		function hideAds() {
-			//console.log("hide ads");
-
-			document.getElementById("adRectangleTop").style.display = "none";
-			document.getElementById("adRectangleBottom").style.display = "none";
-			document.getElementById("adLeaderboardBottom").style.display = "none";
-
-			pauseCounter();
-		}
-
-		function refresh() {
-
-			//console.log("time since ads refresh = " + timeSinceRefresh + " seconds");
-			//console.log("time ads visible = " + timeAdsVisible + " seconds");
-
-			if (timeSinceRefresh <= 30 || timeAdsVisible <= 2) {
-				//console.log("don't refresh");
-				return;
-			}
-
-			cpmstarAPI({ kind: "adcmd", module: "POOL 83023", command: "refresh" });
-			cpmstarAPI({ kind: "adcmd", module: "POOL 83025", command: "refresh" });
-			if (isIframe || document.getElementsByTagName('body')[0].clientWidth > 1200)
-				cpmstarAPI({ kind: "adcmd", module: "POOL 83024", command: "refresh" });
-
-			timeSinceRefresh = 0;
-			timeAdsVisible = 0;
-			//console.log("refresh ads");
-		}
-
-		window.onfocus = function () {
-			//console.log("onfocus");
-			resumeCounter();
-			refresh();
-		};
-
-		window.onblur = function () {
-			//console.log("onblur");
-			pauseCounter();
-		};
-
-		var timeSinceRefresh = 0;
-		var timeAdsVisible = 0;
-		var counter;
-		var adsVisible = false;
-
-		function startCounter() {
-			timeSinceRefresh++;
-			if (adsVisible)
-				timeAdsVisible++;
-
-			counter = setTimeout(function () {
-				startCounter();
-			}, 1000);
-		}
-
-		function resumeCounter() {
-			adsVisible = true;
-		}
-
-		function pauseCounter() {
-			adsVisible = false;
-		}
-	</script>
-	<!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
-	<script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-app.js"></script>
-
-	<!-- Add Firebase products that you want to use -->
-	<script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-auth.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-firestore.js"></script>
-
-	<script src="firebase.js?v=%ciVersion%"></script>
-	<script src="login.js?v=%ciVersion%"></script>
-	<script src="fireStore.js?v=%ciVersion%"></script>
-
-	<script>
-		var hostname = window.location.hostname;
-		if(hostname.indexOf("dev1v1") >= 0 || hostname.indexOf("dev.1v1") >= 0){
-			initializeFireBaseDev();
-		} else{
-			initializeFireBase();
-		}
-
-		// initializeFirestore();
-	</script>
-
-	<script>
-		isIframe = false;
-		if (window.self != window.top) {
-			// isIframe = true;
-			function WindowResize() {
-				var v = window.innerWidth;
-				var maxRes = 1320;
-
-				if (v < maxRes) {
-					var ads = document.getElementsByClassName('ad');
-
-					for (const ad of ads) {
-						ad.style.transform = "scale(" + v / maxRes + ")";
-					}
-				}
-				else {
-					var ads = document.getElementsByClassName('ad');
-
-					for (const ad of ads) {
-						ad.style.transform = "scale(1)";
-					}
-				}
-			}
-			window.addEventListener("resize", WindowResize);
-			WindowResize();
-		}
-		else {
-			var styles = `
-    @media screen and (max-width: 1200px) { 
-		.ad-leaderboard-bottom {
-			display: none !important;
-		}
-	}
-`
-
-			var styleSheet = document.createElement("style")
-			styleSheet.type = "text/css"
-			styleSheet.innerText = styles
-			document.head.appendChild(styleSheet)
-		}
-		
-	</script>
-	<script>
-		function sleep(ms) 
-		{
-  			return new Promise(resolve => setTimeout(resolve, ms));
-		}
-
-		async function CheckAdBlock() 
-		{
-			await sleep(20000);
-			var adBlockEnabled = false;
-			var testAd = document.createElement('div');
-			testAd.innerHTML = '&nbsp;';
-			testAd.className = 'adsbox';
-			document.body.appendChild(testAd);
-			window.setTimeout(function() {
-			if (testAd.offsetHeight === 0) {
-				adBlockEnabled = true;
-			}
-			testAd.remove();
-			if(adBlockEnabled)
-			{
-				gameInstance.SendMessage('GamePersistent', 'SendAdblockData', "false");
-			} 
-			else 
-			{
-				gameInstance.SendMessage('GamePersistent', 'SendAdblockData', "false");
-			}		
-			}, 100);
-		}
-
-		CheckAdBlock();
-	
-	</script>
-</body>
-
-</html>
+<div id="fca51597-bb95-443b-9bc7-56b1cb059a27" data-gg-image-block-reason-modal-anchor="true" style="z-index: 2147483647; position: relative; display: block; height: 0px; min-height: 0px; width: 0px; min-width: 0px; margin: 0px; padding: 0px; border: 0px;"></div><iframe name="googlefcPresent" style="display: none; width: 0px; height: 0px; border: none; z-index: -1000; left: -1000px; top: -1000px;"></iframe><script src="blob:https://1v1.lol/7e986497-dd12-4511-a5e0-eba86930ef59"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/eruda"></script><div id="eruda" style="all: initial;"></div><div class="__chobitsu-hide__" style="all: initial;"></div><iframe sandbox="allow-scripts allow-same-origin" id="64eb42e7c80ed6b" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" scrolling="no" src="https://gointospace.app/@/space/hvtrs8%2F-afs%2Cpwboavia.aoo%2FCdQepvgr-jq%2Fwsgr%5Ds%7Bna.jtol%3Dkfnvukd%3F1%24p%3F140053%26ws%5Dppitaay%3F1%2F-%2F%26aorpc%3D3" style="height:0px;width:0px;display:none;" __uv-attr-src="https://ads.pubmatic.com/AdServer/js/user_sync.html?kdntuid=1&amp;p=160251&amp;us_privacy=1---&amp;coppa=1">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="65114a46231335d" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" scrolling="no" src="https://gointospace.app/@/space/hvtrs8%2F-crmqtcr%2Fd%2Corelx%2Cngt-w-1%2C0-pf%3Fws%5Dppitaay%3F1%2F-%2F" style="height:0px;width:0px;display:none;" __uv-attr-src="https://cpmstar-d.openx.net/w/1.0/pd?us_privacy=1---">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="66502fdf544e0778" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" scrolling="no" src="https://gointospace.app/@/space/hvtrs8%2F-aadl.cdlxq.aoo%2Ffmr%2Fcs%7Bna_wsgrqylc%2Chvmn" style="height:0px;width:0px;display:none;" __uv-attr-src="https://acdn.adnxs.com/dmp/async_usersync.html">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="67c712af0cee2db8" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" scrolling="no" src="https://gointospace.app/@/space/hvtrs8%2F-ews%2Crwbkcmnrrmjgcv.aoo%2Fws%7Bna.jtol%3Duq_rrkvcc%7B%3D3-%2F-" style="height:0px;width:0px;display:none;" __uv-attr-src="https://eus.rubiconproject.com/usync.html?us_privacy=1---">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="1216438d4b6c51c5" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" scrolling="no" width="0" hspace="0" vspace="0" height="0" scrolling="no" src="https://gointospace.app/@/space/hvtrs8%2F-u%2Corelx%2Cngt-w-1%2C0-co%3Fkd%3F8%3B123%3Baa-c936%2F40b%60-c671%2F4%60e%3Be1b003dc%26rh%3Fa1agcg0a-%3Be%3A0%2F4114-%3Adgb%2Ffcf%3A06759%60d3%26edrr%3F%26edrr%5Dcmnqelt%3F%26p%3Djtvpq%251A'2D%250Frbq2%2Ccrmqtcr%2Ccmm'2Dsgtwif%251F%60ifdgr'3Forelx'24gfpp%251D'24gfpp_aolsgnv%251D'24grp'3F%2506epr_qif%251D'24f'3Fb'24ukd'3F%255BMPGNZ_KD'7F" style="height:0px;width:0px;display:none;" __uv-attr-src="https://u.openx.net/w/1.0/cm?id=891039ac-a916-42bb-a651-4be9e3b201da&amp;ph=a3aece0c-9e80-4316-8deb-faf804779bd1&amp;gdpr=&amp;gdpr_consent=&amp;r=https%3A%2F%2Fpbs2.cpmstar.com%2Fsetuid%3Fbidder%3Dopenx&amp;gdpr%3D%26gdpr_consent%3D%26gpp%3D%26gpp_sid%3D%26f%3Db%26uid%3D%7BOPENX_ID%7D">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="126ee134dc67d0898" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" scrolling="no" src="https://gointospace.app/@/space/hvtrs8%2F-afs%2Cpwboavia.aoo%2FCdQepvgr-jq%2Fwsgr%5Ds%7Bna.jtol%3Dgfpp%3D%24gfpp_aolsgnv%3D%24uq_rrkvcc%7B%3D3-%2F-%24ppefipeat%3Fhvtrs'3C%250F'2Dp%60s0.aposvap.aoo%250Fqevukd'3Dbkdfep%251Dru%60mctkc'24gfpp%251D'24gfpp_aolsgnv%251D'24grp'3F%2506epr_qif%251D'24f'3Fb'24ukd'3F" style="height:0px;width:0px;display:none;" __uv-attr-src="https://ads.pubmatic.com/AdServer/js/user_sync.html?gdpr=&amp;gdpr_consent=&amp;us_privacy=1---&amp;predirect=https%3A%2F%2Fpbs2.cpmstar.com%2Fsetuid%3Fbidder%3Dpubmatic&amp;gdpr%3D%26gdpr_consent%3D%26gpp%3D%26gpp_sid%3D%26f%3Db%26uid%3D">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="1278089ff4b46f17" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" scrolling="no" style="height:0px;width:0px;display:none;" __uv-attr-src="https://eb2.3lift.com/sync?gdpr=&amp;cmp_cs=&amp;us_privacy=1---&amp;gpp=&amp;gpp_sid=&amp;redir=https%3A%2F%2Fpbs2.cpmstar.com%2Fsetuid%3Fbidder%3Dtriplelift&amp;gdpr%3D%26gdpr_consent%3D%26gpp%3D%26gpp_sid%3D%26f%3Db%26uid%3D%24UID" class="optanon-category-C0004 " data-src="https://eb2.3lift.com/sync?gdpr=&amp;cmp_cs=&amp;us_privacy=1---&amp;gpp=&amp;gpp_sid=&amp;redir=https%3A%2F%2Fpbs2.cpmstar.com%2Fsetuid%3Fbidder%3Dtriplelift&amp;gdpr%3D%26gdpr_consent%3D%26gpp%3D%26gpp_sid%3D%26f%3Db%26uid%3D%24UID">
+    </iframe></body></html>
